@@ -165,16 +165,16 @@ type_resistance = {
      "fire": ["bug", "steel", "grass", "ice", "fairy", "fire"],
      "dark": ["ghost", "dark"]
 }
-chosen = random.choice(pokemons)
+enemy = random.choice(pokemons)
 
-print(f"You encounter a wild {chosen["pokemon"]}")
-print(f"The {chosen["typing"]} pokemon")
-print(f"It has {chosen["hp"]} health")
+print(f"You encounter a wild {enemy["pokemon"]}")
+print(f"The {enemy["typing"]} pokemon")
+print(f"It has {enemy["hp"]} health")
 
 
 battle = input("Do you wish to fight it [y/n]? ")
 if battle .lower() == "n":
-    print(f"You panic and flee from the wild {chosen["pokemon"]}")
+    print(f"You panic and flee from the wild {enemy["pokemon"]}")
 else:
     print("You stand your ground to fight the wild pokemon")
 
@@ -184,11 +184,17 @@ else:
     print(f"It has {your_chosen["hp"]} health")
 
     current_hp = your_chosen["hp"]
-    enemy_hp = chosen["hp"]
+    enemy_hp = enemy["hp"]
 
     while current_hp > 0 and enemy_hp > 0:
-        enemy_move = random.choice(chosen["moves"])
-        print(f"{chosen['pokemon']} uses {enemy_move['name']}")
+        enemy_move = random.choice(enemy["moves"])
+        print(f"{enemy['pokemon']} uses {enemy_move['name']}")
+        if type_weaknesses.get(your_chosen["typing"]) == enemy_move["type"]:
+            print("weak")
+        elif type_resistance.get(your_chosen["typing"]) == enemy_move["type"]:
+            print("resist")
+        else:
+            print("none")
         current_hp -= enemy_move["damage"]
         print(f"Your {your_chosen['pokemon']} takes {enemy_move["damage"]} damage! HP left: {current_hp}")
         
@@ -205,9 +211,10 @@ else:
             print("Invalid move number, Turn skipped.")
             continue
         print(f"Your {your_chosen["pokemon"]} uses {player_move["name"]}")
+        if 
         enemy_hp -= player_move["damage"]
-        print(f"The wild {chosen['pokemon']} takes {player_move["damage"]} damage, HP left: {enemy_hp}")
+        print(f"The wild {enemy['pokemon']} takes {player_move["damage"]} damage, HP left: {enemy_hp}")
 
         if enemy_hp <= 0:
-            print(f"Wild {chosen['pokemon']} fainted!")
+            print(f"Wild {enemy['pokemon']} fainted!")
             break
