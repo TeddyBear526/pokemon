@@ -2,7 +2,7 @@ import random
 pokemons = [
     {
         "pokemon":"Pickachu",
-        "typing": "Electric",
+        "typing": "electric",
         "hp": 42,
         "moves": [
             {
@@ -34,7 +34,7 @@ pokemons = [
     },
     {
         "pokemon": "Blastois",
-        "typing": "Water",
+        "typing": "water",
         "hp": 110,
         "moves": [
             {
@@ -65,7 +65,7 @@ pokemons = [
     },
     {
         "pokemon": "Sandygast",
-        "typing": "ground/ghost",
+        "typing": "ground",
         "hp": 55,
         "moves": [
             {
@@ -97,7 +97,7 @@ pokemons = [
     },
     {
         "pokemon": "Swinub",
-        "typing": "ice/ground",
+        "typing": "ground",
         "hp": 38,
         "moves":[
             {
@@ -152,7 +152,7 @@ type_resistance = {
      "fighting": ["rock", "bug", "dark"],
      "flying": ["fighting", "bug", "grass"],
      "poison": ["fighting", "poison", "bug", "fairy"],
-     "ground": ["poison", "rock"],
+     "ground": ["poison", "rock", "electric"],
      "rock": ["normal", "flying", "poison", "fire"],
      "electric": ["flying", "steel", "electric"],
      "water": ["fire", "water", "ice", "steel"],
@@ -170,6 +170,7 @@ enemy = random.choice(pokemons)
 print(f"You encounter a wild {enemy["pokemon"]}")
 print(f"The {enemy["typing"]} pokemon")
 print(f"It has {enemy["hp"]} health")
+print(type_resistance.get(enemy["typing"]))
 
 
 battle = input("Do you wish to fight it [y/n]? ")
@@ -189,13 +190,16 @@ else:
     while current_hp > 0 and enemy_hp > 0:
         enemy_move = random.choice(enemy["moves"])
         print(f"{enemy['pokemon']} uses {enemy_move['name']}")
-        if type_weaknesses.get(your_chosen["typing"]) == enemy_move["type"]:
-            print("weak")
-        elif type_resistance.get(your_chosen["typing"]) == enemy_move["type"]:
-            print("resist")
+        weak = enemy_move["type"] in type_weaknesses.get(your_chosen["typing"], [])
+        resist = enemy_move["type"] in type_resistance.get(your_chosen["typing"], [])
+        if weak:
+            current_hp -= enemy_move["damage"] *2
+            print(f"Your {your_chosen['pokemon']} takes {enemy_move["damage"]*2} damage! HP left: {current_hp}")
+        elif resist:
+            current_hp -= enemy_move["damage"] *0.5
+            print(f"Your {your_chosen['pokemon']} takes {enemy_move["damage"]*0.5} damage! HP left: {current_hp}")
         else:
-            print("none")
-        current_hp -= enemy_move["damage"]
+            current_hp -= enemy_move["damage"]
         print(f"Your {your_chosen['pokemon']} takes {enemy_move["damage"]} damage! HP left: {current_hp}")
         
         if current_hp <= 0:
@@ -211,9 +215,17 @@ else:
             print("Invalid move number, Turn skipped.")
             continue
         print(f"Your {your_chosen["pokemon"]} uses {player_move["name"]}")
-        if 
-        enemy_hp -= player_move["damage"]
-        print(f"The wild {enemy['pokemon']} takes {player_move["damage"]} damage, HP left: {enemy_hp}")
+        weak = player_move["type"] in type_weaknesses.get(enemy["typing"], [])
+        resist = player_move["type"] in type_resistance.get(enemy["typing"], [])
+        if weak:
+            enemy_hp -= player_move["damage"] *2
+            print(f"The wild {enemy['pokemon']} takes {player_move["damage"]*2} damage, HP left: {enemy_hp}")
+        elif resist:
+            enemy_hp -= player_move["damage"]* 0.5
+            print(f"The wild {enemy['pokemon']} takes {player_move["damage"]*0.5} damage, HP left: {enemy_hp}")
+        else:
+            enemy_hp -= player_move["damage"]
+            print(f"The wild {enemy['pokemon']} takes {player_move["damage"]} damage, HP left: {enemy_hp}")
 
         if enemy_hp <= 0:
             print(f"Wild {enemy['pokemon']} fainted!")
