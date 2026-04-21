@@ -65,7 +65,7 @@ pokemons = [
     },
     {
         "pokemon": "Sandygast",
-        "typing": "ground",
+        "typing": "ground/ghost",
         "hp": 55,
         "moves": [
             {
@@ -97,7 +97,7 @@ pokemons = [
     },
     {
         "pokemon": "Swinub",
-        "typing": "ground",
+        "typing": "ground/ice",
         "hp": 38,
         "moves":[
             {
@@ -190,8 +190,11 @@ else:
     while current_hp > 0 and enemy_hp > 0:
         enemy_move = random.choice(enemy["moves"])
         print(f"{enemy['pokemon']} uses {enemy_move['name']}")
-        weak = enemy_move["type"] in type_weaknesses.get(your_chosen["typing"], [])
-        resist = enemy_move["type"] in type_resistance.get(your_chosen["typing"], [])
+        types = your_chosen["typing"].split("/")
+        weak = any(enemy_move["type"] in type_weaknesses.get(t, []) for t in types)
+        super_weak = any(enemy_move["type"] in type_weaknesses.get(t,[]) for t in types)
+        resist = any(enemy_move["type"] in type_resistance.get(t, []) for t in types) and not weak
+
         if weak:
             current_hp -= enemy_move["damage"] *2
             print(f"Your {your_chosen['pokemon']} takes {enemy_move["damage"]*2} damage! HP left: {current_hp}")
