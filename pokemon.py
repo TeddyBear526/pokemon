@@ -1,132 +1,274 @@
 import random
 pokemons = [
     {
-        "pokemon":"Pickachu",
-        "typing": "electric",
-        "hp": 42,
-        "speed": 40,
+        "pokemon":"Raichu", "typing": "electric", "hp": 60, "speed": 100,
         "moves": [
             {
-                "name": "Thunderbolt",
-                "damage": 25,
-                "type": "electric"
-            }
-            ,
-            {
-                "name": "Iron Tail",
-                "damage": 20,
-                "type": "steel"
-            }
-            ,
-            {
-                "name": "PLay Rough",
-                "damage": 15,
-                "type": "fairy"
-            }
-            ,
-            {
-                "name": "Volt Tackle",
-                "damage": 25,
-                "type": "electric"
-            
-            }
-        ]
-
-    },
-    {
-        "pokemon": "Blastois",
-        "typing": "water",
-        "hp": 110,
-        "speed": 25,
-        "moves": [
-            {
-                "name":"Water Gun",
-                "damage": 10,
-                "type": "water"
-            }
-            ,
-            {
-                "name": "Aqua Jet",
-                "damage": 10,
-                "type": "water"
-            }
-            ,
-            {
-                "name":"Liquidation",
-                "damage": 15,
-                "type": "water"
-            }
-            ,
-            {
-                "name": "tackle",
-                "damage": 5,
-                "type": "normal"
-            
-            }
-        ]
-    },
-    {
-        "pokemon": "Sandygast",
-        "typing": "ground/ghost",
-        "hp": 55,
-        "speed": 10,
-        "moves": [
-            {
-                "name": "Scorching Sands",
-                "damage": 20,
-                "type": "ground"
-            }
-            ,
-            {
-                "name": "Shadow Ball",
-                "damage": 25,
-                "type": "ghost"
-            }
-            ,
-            {
-                "name": "Rock Tomb",
-                "damage": 15,
-                "type": "rock"
-                
-
+                "name": "Thunderbolt", "damage": 30, "type": "electric"
             },
             {
-                "name": "Earth Power",
-                "damage": 20,
-                "type": "ground"
-            
+                "name": "Brick Break", "damage": 30, "type": "fighting"
+            },
+            {
+                "name": "Shadow Ball", "damage": 25, "type": "ghost"
+            },
+            {
+                "name": "Nasty Plot", "damage": 0, "type": "dark"
             }
         ]
     },
     {
-        "pokemon": "Swinub",
-        "typing": "ground/ice",
-        "hp": 38,
-        "speed": 15,
-        "moves":[
+        "pokemon":"Ninetales", "typing": "fire", "hp": 73, "speed": 100,
+        "moves": [
             {
-                "name":"Blizzard",
-                "damage": 25,
-                "type": "ice"
+                "name": "Fire Blast", "damage": 35, "type": "fire"
+            },
+            {
+                "name": "Nasty Plot", "damage": 0, "type": "dark"
+            },
+            {
+                "name": "Dazzling Gleam", "damage": 30, "type": "fairy"
+            },
+            {
+                "name": "Dark Pulse", "damage": 30, "type": "dark"
             }
-            ,
+        ]
+    },
+    {
+        "pokemon":"Arcanine", "typing": "fire", "hp": 90, "speed": 95,
+        "moves": [
             {
-                "name": "Earthquake",
-                "damage": 30,
-                "type": "ground"
+                "name": "Flare Blitz", "damage": 40, "type": "fire"
+            },
+            {
+                "name": "Wild Charge", "damage": 30, "type": "electric"
+            },
+            {
+                "name": "Extreme Speed", "damage": 20, "type": "normal"
+            },
+            {
+                "name": "Close Combat", "damage": 40, "type": "fighting"
             }
-            ,
+        ]
+    },
+    {
+        "pokemon":"Lapras", "typing": "water", "hp": 130, "speed": 60,
+        "moves": [
             {
-                "name":"Icicle Crash",
-                "damage":30,
-                "type": "ice"
+                "name": "Surf", "damage": 30, "type": "water"
+            },
+            {
+                "name": "Ice Beam", "damage": 30, "type": "ice"
+            },
+            {
+                "name": "Dragon Dance", "damage": 0, "type": "dragon"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
             }
-            ,
+        ]
+    },
+    {
+        "pokemon":"Dragonite", "typing": "dragon", "hp": 91, "speed": 80,
+        "moves": [
             {
-                "name":"Take Down",
-                "damage":20,
-                "type": "normal"
-            
+                "name": "Outrage", "damage": 40, "type": "dragon"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
+            },
+            {
+                "name": "Hurricane", "damage": 35, "type": "flying"
+            },
+            {
+                "name": "Superpower", "damage": 35, "type": "fighting"
+            }
+        ]
+    },
+    {
+        "pokemon":"Gyarados", "typing": "water", "hp": 95, "speed": 81,
+        "moves": [
+            {
+                "name": "Waterfall", "damage": 30, "type": "water"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
+            },
+            {
+                "name": "Stone Edge", "damage": 35, "type": "rock"
+            },
+            {
+                "name": "Crunch", "damage": 30, "type": "dark"
+            }
+        ]
+    },
+    {
+        "pokemon":"Gengar", "typing": "ghost", "hp": 65, "speed": 130,
+        "moves": [
+            {
+                "name": "Shadow Ball", "damage": 30, "type": "ghost"
+            },
+            {
+                "name": "Focus Blast", "damage": 35, "type": "fighting"
+            },
+            {
+                "name": "Sludge Bomb", "damage": 30, "type": "poison"
+            },
+            {
+                "name": "Thunderbolt", "damage": 30, "type": "electric"
+            }
+        ]
+    },
+    {
+        "pokemon":"Machamp", "typing": "fighting", "hp": 90, "speed": 55,
+        "moves": [
+            {
+                "name": "Close Combat", "damage": 40, "type": "fighting"
+            },
+            {
+                "name": "Stone Edge", "damage": 35, "type": "rock"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
+            },
+            {
+                "name": "Bullet Punch", "damage": 20, "type": "steel"
+            }
+        ]
+    },
+    {
+        "pokemon":"Golem", "typing": "rock", "hp": 80, "speed": 45,
+        "moves": [
+            {
+                "name": "Stone Edge", "damage": 35, "type": "rock"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
+            },
+            {
+                "name": "Explosion", "damage": 50, "type": "normal"
+            },
+            {
+                "name": "Iron Head", "damage": 30, "type": "steel"
+            }
+        ]
+    },
+    {
+        "pokemon":"Alakazam", "typing": "psychic", "hp": 55, "speed": 120,
+        "moves": [
+            {
+                "name": "Psychic", "damage": 35, "type": "psychic"
+            },
+            {
+                "name": "Focus Blast", "damage": 35, "type": "fighting"
+            },
+            {
+                "name": "Shadow Ball", "damage": 25, "type": "ghost"
+            },
+            {
+                "name": "Dazzling Gleam", "damage": 30, "type": "fairy"
+            }
+        ]
+    },
+    {
+        "pokemon":"Tentacruel", "typing": "water", "hp": 80, "speed": 55,
+        "moves": [
+            {
+                "name": "Hydro Pump", "damage": 35, "type": "water"
+            },
+            {
+                "name": "Sludge Wave", "damage": 30, "type": "poison"
+            },
+            {
+                "name": "Ice Beam", "damage": 30, "type": "ice"
+            },
+            {
+                "name": "Psychic", "damage": 35, "type": "psychic"
+            }
+        ]
+    },
+    {
+        "pokemon":"Vileplume", "typing": "grass", "hp": 75, "speed": 50,
+        "moves": [
+            {
+                "name": "Solar Beam", "damage": 40, "type": "grass"
+            },
+            {
+                "name": "Sludge Bomb", "damage": 30, "type": "poison"
+            },
+            {
+                "name": "Dazzling Gleam", "damage": 30, "type": "fairy"
+            },
+            {
+                "name": "Moonblast", "damage": 35, "type": "fairy"
+            }
+        ]
+    },
+    {
+        "pokemon":"Rapidash", "typing": "fire", "hp": 65, "speed": 100,
+        "moves": [
+            {
+                "name": "Fire Blast", "damage": 35, "type": "fire"
+            },
+            {
+                "name": "Wild Charge", "damage": 30, "type": "electric"
+            },
+            {
+                "name": "Bounce", "damage": 25, "type": "flying"
+            },
+            {
+                "name": "Fury Attack", "damage": 20, "type": "normal"
+            }
+        ]
+    },
+    {
+        "pokemon":"Slowbro", "typing": "water", "hp": 95, "speed": 30,
+        "moves": [
+            {
+                "name": "Surf", "damage": 30, "type": "water"
+            },
+            {
+                "name": "Psychic", "damage": 35, "type": "psychic"
+            },
+            {
+                "name": "Ice Beam", "damage": 30, "type": "ice"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
+            }
+        ]
+    },
+    {
+        "pokemon":"Snorlax", "typing": "normal", "hp": 150, "speed": 35,
+        "moves": [
+            {
+                "name": "Body Slam", "damage": 30, "type": "normal"
+            },
+            {
+                "name": "Crunch", "damage": 30, "type": "dark"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
+            },
+            {
+                "name": "Stone Edge", "damage": 35, "type": "rock"
+            }
+        ]
+    },
+    {
+        "pokemon":"Exeggutor", "typing": "grass", "hp": 95, "speed": 55,
+        "moves": [
+            {
+                "name": "Solar Beam", "damage": 40, "type": "grass"
+            },
+            {
+                "name": "Psychic", "damage": 35, "type": "psychic"
+            },
+            {
+                "name": "Earthquake", "damage": 30, "type": "ground"
+            },
+            {
+                "name": "Dragon Hammer", "damage": 30, "type": "dragon"
             }
         ]
     },
@@ -306,7 +448,7 @@ else:
                 print(f"Your {your_chosen['pokemon']} fainted!")
                 break
         else:
-            first = random(1, 2)
+            first = random.randint(1,2)
 
             if first == 1:
 
