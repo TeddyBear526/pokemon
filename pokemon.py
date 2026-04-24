@@ -4,6 +4,7 @@ pokemons = [
         "pokemon":"Pickachu",
         "typing": "electric",
         "hp": 42,
+        "speed": 40,
         "moves": [
             {
                 "name": "Thunderbolt",
@@ -36,6 +37,7 @@ pokemons = [
         "pokemon": "Blastois",
         "typing": "water",
         "hp": 110,
+        "speed": 25,
         "moves": [
             {
                 "name":"Water Gun",
@@ -67,6 +69,7 @@ pokemons = [
         "pokemon": "Sandygast",
         "typing": "ground/ghost",
         "hp": 55,
+        "speed": 10,
         "moves": [
             {
                 "name": "Scorching Sands",
@@ -99,6 +102,7 @@ pokemons = [
         "pokemon": "Swinub",
         "typing": "ground/ice",
         "hp": 38,
+        "speed": 15,
         "moves":[
             {
                 "name":"Blizzard",
@@ -170,7 +174,6 @@ enemy = random.choice(pokemons)
 print(f"You encounter a wild {enemy["pokemon"]}")
 print(f"The {enemy["typing"]} pokemon")
 print(f"It has {enemy["hp"]} health")
-print(type_resistance.get(enemy["typing"]))
 
 
 battle = input("Do you wish to fight it [y/n]? ")
@@ -212,14 +215,18 @@ else:
                 print(f"Your {your_chosen['pokemon']} fainted!")
                 break
 
-            for i, move in enumerate(your_chosen["moves"], start=1):
-                print(f"{i}. {move["name"]} {move["damage"]} dmg")
-            choice = int(input("Choose move number: ")) -1
-            if 0 <= choice < len(your_chosen["moves"]):
+            while True:
+                for i, move in enumerate(your_chosen["moves"], start=1):
+                    print(f"{i}. {move["name"]} {move["damage"]} dmg")
+                try:
+                    choice = int(input("Choose move number: ")) -1
+                except ValueError:
+                    print("Please enter a number")
+                if 0 <= choice < len(your_chosen["moves"]):
                     player_move = your_chosen["moves"][choice]
-            else:
-                print("Invalid move number, Turn skipped.")
-                continue
+                    break
+                print("Invalid move number, try again.")
+
             print(f"Your {your_chosen["pokemon"]} uses {player_move["name"]}")
             types = enemy["typing"].split("/")
             weak = any(player_move["type"] in type_weaknesses.get(t, []) for t in types)
@@ -242,14 +249,19 @@ else:
                 break
 
         elif enemy["speed"] < your_chosen["speed"]:
-            for i, move in enumerate(your_chosen["moves"], start=1):
-                print(f"{i}. {move["name"]} {move["damage"]} dmg")
-            choice = int(input("Choose move number: ")) -1
-            if 0 <= choice < len(your_chosen["moves"]):
+
+            while True:
+                for i, move in enumerate(your_chosen["moves"], start=1):
+                    print(f"{i}. {move["name"]} {move["damage"]} dmg")
+                try:
+                    choice = int(input("Choose move number: ")) -1
+                except ValueError:
+                    print("Please enter a number")
+                if 0 <= choice < len(your_chosen["moves"]):
                     player_move = your_chosen["moves"][choice]
-            else:
-                print("Invalid move number, Turn skipped.")
-                continue
+                    break
+                print("Invalid move number, try again.")
+            
             print(f"Your {your_chosen["pokemon"]} uses {player_move["name"]}")
             types = enemy["typing"].split("/")
             weak = any(player_move["type"] in type_weaknesses.get(t, []) for t in types)
@@ -297,14 +309,19 @@ else:
             first = random(1, 2)
 
             if first == 1:
-                for i, move in enumerate(your_chosen["moves"], start=1):
-                    print(f"{i}. {move["name"]} {move["damage"]} dmg")
-                choice = int(input("Choose move number: ")) -1
-                if 0 <= choice < len(your_chosen["moves"]):
+
+                while True:
+                    for i, move in enumerate(your_chosen["moves"], start=1):
+                        print(f"{i}. {move["name"]} {move["damage"]} dmg")
+                    try:
+                        choice = int(input("Choose move number: ")) -1
+                    except ValueError:
+                        print("Please enter a number")
+                    if 0 <= choice < len(your_chosen["moves"]):
                         player_move = your_chosen["moves"][choice]
-                else:
-                    print("Invalid move number, Turn skipped.")
-                    continue
+                        break
+                    print("Invalid move number, try again.")
+
                 print(f"Your {your_chosen["pokemon"]} uses {player_move["name"]}")
                 types = enemy["typing"].split("/")
                 weak = any(player_move["type"] in type_weaknesses.get(t, []) for t in types)
@@ -348,7 +365,7 @@ else:
                 if current_hp <= 0:
                     print(f"Your {your_chosen['pokemon']} fainted!")
                     break
-                
+
             elif first == 2:
                 enemy_move = random.choice(enemy["moves"])
                 print(f"{enemy['pokemon']} uses {enemy_move['name']}")
@@ -373,14 +390,18 @@ else:
                     print(f"Your {your_chosen['pokemon']} fainted!")
                     break
 
-                for i, move in enumerate(your_chosen["moves"], start=1):
-                    print(f"{i}. {move["name"]} {move["damage"]} dmg")
-                choice = int(input("Choose move number: ")) -1
-                if 0 <= choice < len(your_chosen["moves"]):
+                while True:
+                    for i, move in enumerate(your_chosen["moves"], start=1):
+                        print(f"{i}. {move["name"]} {move["damage"]} dmg")
+                    try:
+                        choice = int(input("Choose move number: ")) -1
+                    except ValueError:
+                        print("Please enter a number")
+                    if 0 <= choice < len(your_chosen["moves"]):
                         player_move = your_chosen["moves"][choice]
-                else:
-                    print("Invalid move number, Turn skipped.")
-                    continue
+                        break
+                    print("Invalid move number, try again.")
+                
                 print(f"Your {your_chosen["pokemon"]} uses {player_move["name"]}")
                 types = enemy["typing"].split("/")
                 weak = any(player_move["type"] in type_weaknesses.get(t, []) for t in types)
